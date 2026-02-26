@@ -1,0 +1,13 @@
+requests
+beautifulsoup4
+pandas
+selenium
+scikit-learn
+xgboost
+fastapi
+uvicorn
+streamlit
+joblib
+jupyter
+matplotlib
+seaborn
