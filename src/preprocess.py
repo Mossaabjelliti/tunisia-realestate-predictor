@@ -53,6 +53,30 @@ def load_and_clean():
     # Remove garbage chambres
     df = df[(df['chambres'] >= 0) & (df['chambres'] <= 10)]
 
+    # Merge known location variants into canonical names
+    LOCATION_MERGE = {
+        # Ariana governorate
+        'Ariana Ville':         'Ariana',
+        'Riadh al Andalous':    'Ariana',
+        'Ennasr':               'Ariana',
+        # Sousse
+        'Sousse Ville':         'Sousse',
+        'Sousse Jaouhara':      'Sousse',
+        'Sousse Corniche':      'Sousse',
+        'Hammam Sousse':        'Sousse',
+        'Sahloul':              'Sousse',
+        'Akouda':               'Sousse',
+        'Khezama Est':          'Sousse',
+        # Nabeul
+        # Note: Hammamet and Kélibia kept separate — distinct price points
+        'Hergla':               'Sousse',  # coastal Sousse area
+        # Tunis city
+        'Nouvelle Medina':      'Tunis',
+        'El Mourouj':           'Tunis',
+        'Le Bardo':             'Tunis',
+    }
+    df['location'] = df['location'].replace(LOCATION_MERGE)
+
     # Normalize location — merge rare ones into "Autre"
     top_locations = df['location'].value_counts()
     top_locations = top_locations[top_locations >= 10].index.tolist()
