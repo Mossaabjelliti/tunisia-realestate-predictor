@@ -20,7 +20,7 @@ def load_mubawab() -> pd.DataFrame:
 
     # Select and rename to match listings_clean schema
     mub = mub[["transaction_type", "price", "superficie", "chambres",
-               "salles_de_bains", "location"]].copy()
+               "salles_de_bains", "location", "source"]].copy()
 
     print(f"[INFO] Mubawab data loaded: {len(mub)} rows")
     return mub
@@ -28,6 +28,8 @@ def load_mubawab() -> pd.DataFrame:
 
 def load_and_clean():
     df_clean = pd.read_csv("data/processed/listings_clean.csv")
+    if 'source' not in df_clean.columns:
+        df_clean['source'] = 'tayara'
     df_mub = load_mubawab()
 
     if not df_mub.empty:
