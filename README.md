@@ -130,8 +130,8 @@ API documentation can be explored through FastAPI's generated Swagger/OpenAPI in
 ### Installation
 
 ```bash
-git clone https://github.com/Mossaabjelliti/tunisia-realestate-predictor.git
-cd tunisia-realestate-predictor
+git clone https://github.com/Mossaabjelliti/tunisia-real-estate-ml.git
+cd tunisia-real-estate-ml
 
 python -m venv venv
 ```
